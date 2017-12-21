@@ -1,0 +1,8 @@
+phpmob:
+    ui.recaptcha_not_validated: ReCaptcha ไม่ผ่านการตรวจสอบ
+    ui.the_secret_parameter_is_missing: The secret parameter is missing.
+    ui.the_secret_parameter_is_invalid_or_malformed: The secret parameter is invalid or malformed.
+    ui.the_response_parameter_is_missing: The response parameter is missing.
+    ui.the_response_parameter_is_invalid_or_malformed: The response parameter is invalid or malformed.
+    ui.the_request_is_invalid_or_malformed: The request is invalid or malformed.
+    ui.invalid_host: Invalid host.
