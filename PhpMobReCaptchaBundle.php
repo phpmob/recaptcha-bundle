@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace PhpMob\ReCaptchaBundle;
 
+use PhpMob\ReCaptchaBundle\DependencyInjection\PhpMobReCaptchaExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -20,4 +21,8 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class PhpMobReCaptchaBundle extends Bundle
 {
+    public function __construct()
+    {
+        $this->extension = new PhpMobReCaptchaExtension();
+    }
 }
