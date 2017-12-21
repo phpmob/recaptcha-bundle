@@ -13,7 +13,8 @@
 
             var onRecaptchaloadCallback = function () {
                 grecaptcha.render('{{ form.vars.id }}', {
-                    'sitekey': '{{ form.vars.site_key }}'
+                    'sitekey': '{{ form.vars.site_key }}',
+                    'theme': '{{ form.vars.theme }}'
                 });
             };
         </script>

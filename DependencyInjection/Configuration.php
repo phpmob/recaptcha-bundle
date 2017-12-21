@@ -28,16 +28,15 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('dos_recaptcha');
+        $rootNode = $treeBuilder->root('phpmob_recaptcha');
 
         $rootNode
             ->children()
                 ->scalarNode("site_key")->isRequired()->end()
                 ->scalarNode("secret_key")->isRequired()->end()
+                ->scalarNode("theme")->defaultValue('light')->end()
                 ->booleanNode("enabled")->defaultTrue()->end()
-                ->booleanNode("verify_host")->defaultFalse()->end()
-                ->scalarNode("locale_key")->defaultValue("%kernel.default_locale%")->end()
-                ->booleanNode("locale_from_request")->defaultFalse()->end()
+                ->booleanNode("verify_host")->defaultTrue()->end()
             ->end()
         ;
 

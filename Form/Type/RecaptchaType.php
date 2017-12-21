@@ -28,9 +28,15 @@ class RecaptchaType extends AbstractType
      */
     private $siteKey;
 
-    public function __construct($siteKey)
+    /**
+     * @var string
+     */
+    private $theme;
+
+    public function __construct($siteKey, $theme)
     {
         $this->siteKey = $siteKey;
+        $this->theme = $theme;
     }
 
     /**
