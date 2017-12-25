@@ -8,6 +8,7 @@
         <service class="PhpMob\ReCaptchaBundle\Form\Type\RecaptchaType">
             <argument>%phpmob.recaptcha.site_key%</argument>
             <argument>%phpmob.recaptcha.theme%</argument>
+            <argument>%phpmob.recaptcha.enabled%</argument>
             <tag name="form.type"/>
         </service>
         <service class="PhpMob\ReCaptchaBundle\Validator\Constraints\IsValidValidator">

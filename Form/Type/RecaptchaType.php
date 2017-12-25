@@ -33,10 +33,16 @@ class RecaptchaType extends AbstractType
      */
     private $theme;
 
-    public function __construct($siteKey, $theme)
+    /**
+     * @var string
+     */
+    private $enabled;
+
+    public function __construct($siteKey, $theme, $enabled = true)
     {
         $this->siteKey = $siteKey;
         $this->theme = $theme;
+        $this->enabled = $enabled;
     }
 
     /**
@@ -54,6 +60,7 @@ class RecaptchaType extends AbstractType
     {
         $view->vars['site_key'] = $this->siteKey;
         $view->vars['theme'] = $this->theme;
+        $view->vars['enabled'] = $this->enabled;
     }
 
     /**
