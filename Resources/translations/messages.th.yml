@@ -1,5 +1,5 @@
 phpmob:
-    ui.recaptcha_not_validated: ReCaptcha ไม่ผ่านการตรวจสอบ
+    ui.invalid_recaptcha: ReCaptcha ไม่ผ่านการตรวจสอบ
     ui.the_secret_parameter_is_missing: The secret parameter is missing.
     ui.the_secret_parameter_is_invalid_or_malformed: The secret parameter is invalid or malformed.
     ui.the_response_parameter_is_missing: The response parameter is missing.
