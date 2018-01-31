@@ -182,7 +182,7 @@ class RequestChecker implements CheckerInterface
     private function httpGet($data)
     {
         return file_get_contents(sprintf(
-            "https://www.google.com/recaptcha/api/siteverify?%s", http_build_query($data, null, "&")
+            "https://www.google.com/recaptcha/api/siteverify?%s", http_build_query($data, '', "&")
         ), false, $this->getResourceContext());
     }
 
