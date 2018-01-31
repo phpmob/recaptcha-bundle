@@ -12,12 +12,25 @@
             <tag name="form.type"/>
         </service>
         <service class="PhpMob\ReCaptchaBundle\Validator\Constraints\IsValidValidator">
+            <argument type="service" id="phpmob.recaptcha.checker"/>
+            <tag name="validator.constraint_validator" alias="phpmob.recaptcha.validator"/>
+        </service>
+        <service id="phpmob.recaptcha.checker" class="PhpMob\ReCaptchaBundle\Checker\RequestChecker">
             <argument type="service" id="request_stack"/>
             <argument>%phpmob.recaptcha.enabled%</argument>
             <argument>%phpmob.recaptcha.secret_key%</argument>
             <argument>%phpmob.recaptcha.http_proxy%</argument>
             <argument>%phpmob.recaptcha.verify_host%</argument>
-            <tag name="validator.constraint_validator" alias="phpmob.recaptcha.validator"/>
+            <argument>%phpmob.recaptcha.requested_key%</argument>
+        </service>
+        <service id="phpmob.recaptcha.firewall" class="PhpMob\ReCaptchaBundle\Firewall\LoginFormAuthenicationListener"
+                 abstract="true">
+            <argument/>
+            <argument type="service" id="phpmob.recaptcha.checker"/>
+            <argument/>
+            <argument/>
+            <argument type="service" id="logger" on-invalid="null"/>
+            <tag name="monolog.logger" channel="security"/>
         </service>
     </services>
 </container>

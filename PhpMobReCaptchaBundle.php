@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace PhpMob\ReCaptchaBundle;
 
+use PhpMob\ReCaptchaBundle\DependencyInjection\Compiler\LoginFirewallListenerPass;
 use PhpMob\ReCaptchaBundle\DependencyInjection\PhpMobReCaptchaExtension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -24,5 +26,12 @@ class PhpMobReCaptchaBundle extends Bundle
     public function __construct()
     {
         $this->extension = new PhpMobReCaptchaExtension();
+    }
+
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new LoginFirewallListenerPass());
     }
 }

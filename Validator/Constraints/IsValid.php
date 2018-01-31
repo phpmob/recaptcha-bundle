@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace PhpMob\ReCaptchaBundle\Validator\Constraints;
 
+use PhpMob\ReCaptchaBundle\Checker\CheckerInterface;
 use Symfony\Component\Validator\Constraint;
 
 /**
@@ -24,13 +25,14 @@ class IsValid extends Constraint
     /**
      * The reCAPTCHA validation message
      */
-    public $message = 'phpmob.ui.recaptcha_not_validated';
-    public $missingInputSecretMessage = 'The secret parameter is missing.';
-    public $invalidInputSecretMessage = 'The secret parameter is invalid or malformed.';
-    public $missingInputResponseMessage = 'The response parameter is missing.';
-    public $invalidInputResponseMessage = 'The response parameter is invalid or malformed.';
-    public $badRequestMessage = 'The request is invalid or malformed.';
-    public $invalidHostMessage = "Invalid host.";
+    public $message = CheckerInterface::Message;
+    public $missingInputSecretMessage = CheckerInterface::Missing_Input_Secret_Message;
+    public $invalidInputSecretMessage = CheckerInterface::Invalid_Input_Secret_Message;
+    public $missingInputResponseMessage = CheckerInterface::Missing_Input_Response_Message;
+    public $invalidInputResponseMessage = CheckerInterface::Invalid_Input_Response_Message;
+    public $badRequestMessage = CheckerInterface::Bad_Request_Message;
+    public $invalidHostMessage = CheckerInterface::Invalid_Host_Message;
+    public $invalidRemoteIpMessage = CheckerInterface::Invalid_Remote_IP_Message;
 
     /**
      * {@inheritdoc}
@@ -48,16 +50,20 @@ class IsValid extends Constraint
     public function getErrorMessage($code)
     {
         switch ($code) {
-            case 'missing-input-secret':
+            case CheckerInterface::Missing_Input_Secret_Message:
                 return $this->missingInputSecretMessage;
-            case 'invalid-input-secret':
+            case CheckerInterface::Invalid_Input_Secret_Message:
                 return $this->invalidInputSecretMessage;
-            case 'missing-input-response':
+            case CheckerInterface::Missing_Input_Response_Message:
                 return $this->missingInputResponseMessage;
-            case 'invalid-input-response':
+            case CheckerInterface::Invalid_Input_Response_Message:
                 return $this->invalidInputResponseMessage;
-            case 'bad-request':
+            case CheckerInterface::Bad_Request_Message:
                 return $this->badRequestMessage;
+            case CheckerInterface::Invalid_Host_Message:
+                return $this->invalidHostMessage;
+            case CheckerInterface::Invalid_Remote_IP_Message:
+                return $this->invalidRemoteIpMessage;
             default:
                 return $this->message;
         }

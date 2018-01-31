@@ -53,22 +53,55 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use PhpMob\ReCaptchaBundle\Form\Type\RecaptchaType;
 use PhpMob\ReCaptchaBundle\Validator\Constraints\IsValid;
 
-/**
- * @author Ishmael Doss <nukboon@gmail.com>
- */
 class YourType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('field', TextType::class, [])
-            
+
             ->add("recaptcha", RecaptchaType::class, [
                 'mapped' => false,
                 'label' => false,
                 "constraints" => [
                     new IsValid(['groups' => ['some_group_if_need']])
                 ]
+            ])
+        ;
+    }
+}
+
+```
+
+2.1 Use with Login Form
+```yaml
+phpmob_recaptcha
+    login:
+        enabled: true
+        firewall: your_firewall_section_name
+```
+
+```php
+<?php
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use PhpMob\ReCaptchaBundle\Form\Type\RecaptchaType;
+use PhpMob\ReCaptchaBundle\Validator\Constraints\IsValid;
+
+class UserLoginType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('_username', TextType::class, [])
+            ->add('_password', PasswordType::class, [])
+
+            ->add("recaptcha", RecaptchaType::class, [
+                'mapped' => false,
+                'label' => false,
             ])
         ;
     }

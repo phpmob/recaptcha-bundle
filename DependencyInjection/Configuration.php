@@ -37,6 +37,14 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode("theme")->defaultValue('light')->end()
                 ->booleanNode("enabled")->defaultTrue()->end()
                 ->booleanNode("verify_host")->defaultTrue()->end()
+                ->scalarNode("requested_key")->defaultValue('g-recaptcha-response')->cannotBeEmpty()->end()
+                ->arrayNode("login")
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->booleanNode("enabled")->defaultFalse()->end()
+                        ->scalarNode("firewall")->defaultNull()->cannotBeEmpty()->end()
+                    ->end()
+                ->end()
             ->end()
         ;
 
