@@ -9,7 +9,7 @@ Installing via `composer` is recommended.
 
 ```yaml
 "require": {
-  "phpmob/recaptcha-bundle": "~1.0"
+  "phpmob/recaptcha-bundle": "~1.1"
 }
 ```
 
