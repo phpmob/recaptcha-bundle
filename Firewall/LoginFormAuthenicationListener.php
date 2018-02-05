@@ -69,6 +69,10 @@ final class LoginFormAuthenicationListener implements ListenerInterface
             return false;
         }
 
+        if (!$request->request->has($this->options['username_parameter']) || !$request->request->has($this->options['password_parameter'])) {
+            return false;
+        }
+
         if (!$this->checker->isValid()) {
             $exception = new InvalidReCaptchaAuthenticationException('Invalid ReCaptch.');
             $exception->setErrors($this->checker->getErrors());
